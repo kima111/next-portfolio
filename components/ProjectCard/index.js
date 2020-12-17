@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {Component, useState} from 'react'
 import styles from './ProjectCard.module.scss'
 import {BiWorld} from '@react-icons/all-files/bi/BiWorld'
 import {AiFillGithub} from '@react-icons/all-files/ai/AiFillGithub'
@@ -53,6 +53,9 @@ import styled, { css } from 'styled-components'
             display: flex; 
             justify-content: center;
             text-align: center;
+            border: 1px solid #fff;
+            border-radius: 10px;
+            height: 100px;
         `
     // const CardBack = styled.div`
 
@@ -122,11 +125,20 @@ import styled, { css } from 'styled-components'
     `
 
     const HerokuLink = styled.div`
-        fontSize: 2.3em;
-        & + & {
-            fontSize: 2.3em;
+        & .child{
+            font-size: 2.3em;
+        }
+      
+    `
+    const HLink = styled(GrHeroku)`
+        font-size: 2.3em;
+        margin: 15px;
+        transition: 0.5s ease;
+        &:hover {
+            transform: scale(1.15);
         }
     `
+    
 export default function ProjectCard(props) {
     const [isActive, setActive] = useState(false)
     const [clicked, setClicked] = useState(true)
@@ -158,7 +170,7 @@ export default function ProjectCard(props) {
                     <SocialLinks>
                     {props.webLink ? <a href={props.webLink} target='_blank' rel="noopener noreferrer"><BiWorld/></a>:''}
                     {props.githubLink ? <a href={props.githubLink} target='_blank' rel="noopener noreferrer"><AiFillGithub/></a>:''}
-                    {props.herokuLink ? <a href={props.herokuLink} target='_blank' rel="noopener noreferrer"><HerokuLink><GrHeroku/></HerokuLink></a>:''}
+                    {props.herokuLink ? <a href={props.herokuLink} target='_blank' rel="noopener noreferrer"><HerokuLink><HLink/></HerokuLink></a>:''}
                     </SocialLinks>
                 </Social>
         </Card>
